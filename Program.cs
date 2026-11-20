@@ -13,7 +13,7 @@ namespace Rocket_game
             Stopwatch ora = Stopwatch.StartNew();
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
-            const int gyorsKozMs = 100;
+            const int gyorsKozMs = 200;
             const int lassuKozMs = 300;
             int pontszam = 0;
             while (pontszam < 10000)
