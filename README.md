@@ -10,3 +10,6 @@
 - ^ (Fel)
 ### Saját Karakter:
 - [-]  
+### Kinézet:
+- 15 sor (20 kör mire leér)
+- 30 oszlop (20 Űrhajó egymás mellett)
