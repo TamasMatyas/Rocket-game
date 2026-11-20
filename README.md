@@ -29,6 +29,7 @@
 - Shoot = spcae
 - Move = "A" "D"
 <hr>
+
 ## Feladatok:
 - Mátrix és Ufo bele = Tóth Ferenc Péter
 - Mozgás és Rakéta = Hliva Tamás Mátyás
