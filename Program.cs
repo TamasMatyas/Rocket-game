@@ -103,12 +103,6 @@ namespace Rocket_game
                 }
             } while (!vege);
         }
-        static void Main(string[] args)
-        {
-            Feltoltes();
-            mozgas();
-            Jatek();
-
         static void Jatek()
 
         {
@@ -137,5 +131,12 @@ namespace Rocket_game
                 }
             }
         }
+        static void Main(string[] args)
+        {
+            Feltoltes();
+            mozgas();
+            Jatek();
+
+        
     }
 }
