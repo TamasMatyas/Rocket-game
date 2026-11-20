@@ -9,7 +9,8 @@ namespace Rocket_game
         static string ures = " ° ";
         static string raketa = "[-]";
         static string[] rocket = new string[30];
-        static bool vege = false;
+        static bool jatekVege = false;
+        static int pontszam = 0;
         static void Feltoltes()
         {
 
@@ -72,7 +73,7 @@ namespace Rocket_game
                                     {
                                         rocket[i] = ures;
                                         rocket[i + 1] = raketa;
-                                        i = rocket.Length-1;
+                                        i = rocket.Length - 1;
                                     }
                                 }
                             }
@@ -88,7 +89,7 @@ namespace Rocket_game
                                     {
                                         rocket[i] = ures;
                                         rocket[i + 1] = raketa;
-                                        i = rocket.Length-1;
+                                        i = rocket.Length - 1;
                                     }
                                 }
                             }
@@ -96,12 +97,12 @@ namespace Rocket_game
                         }
 
                 }
-                Console.SetCursorPosition(0,0);
+                Console.SetCursorPosition(0, 0);
                 foreach (var item in rocket)
                 {
                     Console.Write(item, 5);
                 }
-            } while (!vege);
+            } while (!jatekVege);
         }
         static void Jatek()
 
@@ -111,11 +112,8 @@ namespace Rocket_game
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 300;
-
-            int pontszam = 0;
-            bool jatekVege = false;
-
+            const int lassuKozMs = 300;        
+            
             while (pontszam < 10000 || jatekVege == true)
             {
                 long most = ora.ElapsedMilliseconds;
@@ -137,6 +135,7 @@ namespace Rocket_game
             mozgas();
             Jatek();
 
-        
+
+        }
     }
 }
