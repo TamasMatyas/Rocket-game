@@ -13,20 +13,24 @@ namespace Rocket_game
             Stopwatch ora = Stopwatch.StartNew();
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
+
             const int gyorsKozMs = 200;
             const int lassuKozMs = 300;
+
             int pontszam = 0;
-            while (pontszam < 10000)
+            bool jatekVege = false;
+
+            while (pontszam < 10000 || jatekVege == true)
             {
                 long most = ora.ElapsedMilliseconds;
                 if (most - utolsoGyorsEsemeny >= gyorsKozMs)
                 {
-                    Console.Write(".");
+                    // Console.Write(".");
                     utolsoGyorsEsemeny = most;
                 }
                 if (most - utolsoLassuEsemeny >= lassuKozMs)
                 {
-                    Console.Write(" [1 mp] ");
+                    // Console.Write(" [1 mp] ");
                     utolsoLassuEsemeny = most;
                 }
             }
