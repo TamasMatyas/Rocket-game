@@ -167,7 +167,7 @@ namespace Rocket_game
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 1000;
+            const int lassuKozMs = 10000;
             Feltolt();
             FeltoltHajo();
             Console.CursorVisible = false;
