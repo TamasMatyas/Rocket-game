@@ -16,6 +16,7 @@ namespace Rocket_game
         static string[] rocket = new string[30];
         static bool jatekVege = false;
         static int pontszam = 0;
+        static Stopwatch ora = Stopwatch.StartNew();
 
         static void Feltolt()
         {
@@ -147,16 +148,15 @@ namespace Rocket_game
                 }
             } while (!jatekVege);
         }
-        static void Jatek()
-
+       
+        static void Main(string[] args)
         {
-            Stopwatch ora = Stopwatch.StartNew();
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 300;        
-            
+            const int lassuKozMs = 300;
+            Feltolt();
             while (pontszam < 10000 || jatekVege == true)
             {
                 long most = ora.ElapsedMilliseconds;
@@ -170,11 +170,7 @@ namespace Rocket_game
                     // Console.Write(" [1 mp] ");
                     utolsoLassuEsemeny = most;
                 }
-            }
-        }
-        static void Main(string[] args)
-        {
-            Feltolt();
+            }            
             Kiir();
             Console.CursorVisible = false;
             Console.ReadLine();
@@ -186,7 +182,6 @@ namespace Rocket_game
             Modosit();
             Kiir();
             mozgas();
-            Jatek();
 
 
         }
