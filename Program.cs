@@ -61,7 +61,7 @@ namespace Rocket_game
         }
 
 
-        static void mozgas()
+        static void Mozgas()
         {
             for (int i = 0; i < rocket.Length; i++)
             {
@@ -187,7 +187,7 @@ namespace Rocket_game
             Console.Clear();
             Modosit();
             Kiir();
-            mozgas();
+            Mozgas();
             Jatek();
 
 
