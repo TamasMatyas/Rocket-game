@@ -10,7 +10,6 @@ namespace Rocket_game
         static Random r = new Random();
         static string ufo = "<->";
         static string ures = "   ";
-        static int sor = 1;
         static string uresHajo = " ° ";
         static string raketa = "[-]";
         static string[] rocket = new string[30];
@@ -25,9 +24,11 @@ namespace Rocket_game
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
                     matrix[i, j] = ures;
-
                 }
             }
+            UFoSorPlus();
+        }
+        static void UFoSorPlus(){
             for (int i = 0; i < matrix.GetLength(1) / 2; i++)
             {
                 int index = r.Next(1, matrix.GetLength(0) - 1);
@@ -155,7 +156,7 @@ namespace Rocket_game
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 300;
+            const int lassuKozMs = 6000;
             Feltolt();
             FeltoltHajo();
             Console.CursorVisible = false;
@@ -168,29 +169,21 @@ namespace Rocket_game
                 Kiir();
                 HajoKiir();
                 Console.SetCursorPosition(0, 0);
-                //Console.Clear();
                 long most = ora.ElapsedMilliseconds;
                 if (most - utolsoGyorsEsemeny >= gyorsKozMs)
                 {
-                    // Console.Write(".");
                     utolsoGyorsEsemeny = most;
                 }
                 if (most - utolsoLassuEsemeny >= lassuKozMs)
                 {
-                    // Console.Write(" [1 mp] ");
+                    Modosit();
+                    UFoSorPlus();
                     utolsoLassuEsemeny = most;
                 }
+
+
+
             }
-
-
-            Modosit();
-            Kiir();
-            Console.ReadLine();
-            Console.Clear();
-            Modosit();
-            Kiir();
-
-
         }
     }
 }
