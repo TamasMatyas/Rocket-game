@@ -42,12 +42,9 @@ namespace Rocket_game
                 {
                     matrix[0, i] = ures;
                 }
-
-
-
-                    //int index = r.Next(1, matrix.GetLength(1) - 1);
-                    //matrix[0, index] = ufo;
-                }
+                //int index = r.Next(1, matrix.GetLength(1) - 1);
+                //matrix[0, index] = ufo;
+            }
         }
         static void FeltoltHajo()
         {
@@ -204,10 +201,6 @@ namespace Rocket_game
                 }
             }
         }
-
-
-
-
         static bool Lent()
         {
             bool vege = false;
@@ -237,7 +230,7 @@ namespace Rocket_game
                     Hajo();
 
                 }
-                
+
                 Kiir();
                 HajoKiir();
                 Console.SetCursorPosition(0, 0);
