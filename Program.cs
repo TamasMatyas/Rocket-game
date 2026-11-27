@@ -56,7 +56,7 @@ namespace Rocket_game
 
         }
 
-        static string ures = " ° ";
+        static string uresHajo = " ° ";
         static string raketa = "[-]";
         static string[] rocket = new string[30];
         static bool jatekVege = false;
@@ -86,7 +86,7 @@ namespace Rocket_game
                                 {
                                     if (i != 0)
                                     {
-                                        rocket[i] = ures;
+                                        rocket[i] = uresHajo;
                                         rocket[i - 1] = raketa;
                                     }
                                 }
@@ -101,7 +101,7 @@ namespace Rocket_game
                                 {
                                     if (i != 0)
                                     {
-                                        rocket[i] = ures;
+                                        rocket[i] = uresHajo;
                                         rocket[i - 1] = raketa;
                                     }
                                 }
@@ -116,7 +116,7 @@ namespace Rocket_game
                                 {
                                     if (i != rocket.Length - 1)
                                     {
-                                        rocket[i] = ures;
+                                        rocket[i] = uresHajo;
                                         rocket[i + 1] = raketa;
                                         i = rocket.Length - 1;
                                     }
@@ -132,7 +132,7 @@ namespace Rocket_game
                                 {
                                     if (i != rocket.Length - 1)
                                     {
-                                        rocket[i] = ures;
+                                        rocket[i] = uresHajo;
                                         rocket[i + 1] = raketa;
                                         i = rocket.Length - 1;
                                     }
