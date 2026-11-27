@@ -10,12 +10,12 @@ namespace Rocket_game
         static Random r = new Random();
         static string ufo = "<->";
         static string ures = "   ";
-        static int sor = 1;
         static string uresHajo = " ° ";
         static string raketa = "[-]";
         static string[] rocket = new string[30];
         static bool jatekVege = false;
         static int pontszam = 0;
+        static Stopwatch ora = Stopwatch.StartNew();
 
         static void Feltolt()
         {
@@ -24,14 +24,25 @@ namespace Rocket_game
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
                     matrix[i, j] = ures;
-
                 }
             }
+            UFoSorPlus();
+        }
+        static void UFoSorPlus()
+        {
             for (int i = 0; i < matrix.GetLength(1) / 2; i++)
             {
-                int index = r.Next(1, matrix.GetLength(0) - 1);
+                int index = r.Next(1, matrix.GetLength(1) - 1);
                 matrix[0, index] = ufo;
             }
+        }
+        static void FeltoltHajo()
+        {
+            for (int i = 0; i < rocket.Length; i++)
+            {
+                rocket[i] = uresHajo;
+            }
+            rocket[14] = raketa;
         }
         static void Kiir()
         {
@@ -39,10 +50,11 @@ namespace Rocket_game
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write($"{matrix[i, j],3}");
+                    Console.Write($"{matrix[i, j]}");
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
         static void Modosit()
         {
@@ -59,138 +71,136 @@ namespace Rocket_game
             }
 
         }
-
-
-        static void mozgas()
+        static void HajoKiir()
         {
-            for (int i = 0; i < rocket.Length; i++)
-            {
-                rocket[i] = ures;
-            }
-            rocket[14] = raketa;
             foreach (var item in rocket)
             {
-                Console.Write(item, 5);
+                Console.Write(item, 3);
             }
-            do
-            {
-                Console.CursorVisible = false;
-                char bemenet = Console.ReadKey(true).KeyChar;
-                switch (bemenet)
-                {
-                    case 'a':
-                        {
-                            for (int i = 0; i < rocket.Length; i++)
-                            {
-                                if (rocket[i] == raketa)
-                                {
-                                    if (i != 0)
-                                    {
-                                        rocket[i] = uresHajo;
-                                        rocket[i - 1] = raketa;
-                                    }
-                                }
-                            }
-                            break;
-                        }
-                    case 'A':
-                        {
-                            for (int i = 0; i < rocket.Length; i++)
-                            {
-                                if (rocket[i] == raketa)
-                                {
-                                    if (i != 0)
-                                    {
-                                        rocket[i] = uresHajo;
-                                        rocket[i - 1] = raketa;
-                                    }
-                                }
-                            }
-                            break;
-                        }
-                    case 'd':
-                        {
-                            for (int i = 0; i < rocket.Length - 1; i++)
-                            {
-                                if (rocket[i] == raketa)
-                                {
-                                    if (i != rocket.Length - 1)
-                                    {
-                                        rocket[i] = uresHajo;
-                                        rocket[i + 1] = raketa;
-                                        i = rocket.Length - 1;
-                                    }
-                                }
-                            }
-                            break;
-                        }
-                    case 'D':
-                        {
-                            for (int i = 0; i < rocket.Length - 1; i++)
-                            {
-                                if (rocket[i] == raketa)
-                                {
-                                    if (i != rocket.Length - 1)
-                                    {
-                                        rocket[i] = uresHajo;
-                                        rocket[i + 1] = raketa;
-                                        i = rocket.Length - 1;
-                                    }
-                                }
-                            }
-                            break;
-                        }
-
-                }
-                Console.SetCursorPosition(0, 0);
-                foreach (var item in rocket)
-                {
-                    Console.Write(item, 5);
-                }
-            } while (!jatekVege);
+            Console.WriteLine();
         }
-        static void Jatek()
-
+        static void Hajo()
         {
-            Stopwatch ora = Stopwatch.StartNew();
+            char bemenet = Console.ReadKey(true).KeyChar;
+            switch (bemenet)
+            {
+                case 'a':
+                    {
+                        for (int i = 0; i < rocket.Length; i++)
+                        {
+                            if (rocket[i] == raketa)
+                            {
+                                if (i != 0)
+                                {
+                                    rocket[i] = uresHajo;
+                                    rocket[i - 1] = raketa;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                case 'A':
+                    {
+                        for (int i = 0; i < rocket.Length; i++)
+                        {
+                            if (rocket[i] == raketa)
+                            {
+                                if (i != 0)
+                                {
+                                    rocket[i] = uresHajo;
+                                    rocket[i - 1] = raketa;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                case 'd':
+                    {
+                        for (int i = 0; i < rocket.Length - 1; i++)
+                        {
+                            if (rocket[i] == raketa)
+                            {
+                                if (i != rocket.Length - 1)
+                                {
+                                    rocket[i] = uresHajo;
+                                    rocket[i + 1] = raketa;
+                                    i = rocket.Length - 1;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                case 'D':
+                    {
+                        for (int i = 0; i < rocket.Length - 1; i++)
+                        {
+                            if (rocket[i] == raketa)
+                            {
+                                if (i != rocket.Length - 1)
+                                {
+                                    rocket[i] = uresHajo;
+                                    rocket[i + 1] = raketa;
+                                    i = rocket.Length - 1;
+                                }
+                            }
+                        }
+                        break;
+                    }
+
+            }
+        }
+        static bool Lent()
+        {
+            bool vege = false;
+            for (int i = 0; i < matrix.GetLength(1); i++)
+            {
+                if (matrix[matrix.GetLength(0) - 1, i] == ufo)
+                {
+                    vege = true;
+                }
+            }
+            return vege;
+        }
+        static void Main(string[] args)
+        {
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 300;        
-            
-            while (pontszam < 10000 || jatekVege == true)
+            const int lassuKozMs = 1000;
+            Feltolt();
+            FeltoltHajo();
+            Console.CursorVisible = false;
+            while (pontszam < 10000 && jatekVege != true)
             {
+                if (Console.KeyAvailable)
+                {
+                    Hajo();
+                }
+                Kiir();
+                HajoKiir();
+                Console.SetCursorPosition(0, 0);
                 long most = ora.ElapsedMilliseconds;
                 if (most - utolsoGyorsEsemeny >= gyorsKozMs)
                 {
-                    // Console.Write(".");
                     utolsoGyorsEsemeny = most;
                 }
                 if (most - utolsoLassuEsemeny >= lassuKozMs)
                 {
-                    // Console.Write(" [1 mp] ");
+                    Modosit();
+                    UFoSorPlus();
                     utolsoLassuEsemeny = most;
+                }
+                if (Lent() || most - utolsoLassuEsemeny >= lassuKozMs)
+                {
+                    jatekVege = true;
+                    Console.Clear();
+                    Console.WriteLine("Game Over!");
+                    Console.WriteLine($"Pontszám: {pontszam}");
                 }
             }
         }
-        static void Main(string[] args)
-        {
-            Feltolt();
-            Kiir();
-            Console.CursorVisible = false;
-            Console.ReadLine();
-            Console.Clear();
-            Modosit();
-            Kiir();
-            Console.ReadLine();
-            Console.Clear();
-            Modosit();
-            Kiir();
-            mozgas();
-            Jatek();
 
 
-        }
     }
 }
