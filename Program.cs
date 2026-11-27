@@ -11,7 +11,11 @@ namespace Rocket_game
         static string ufo = "<->";
         static string ures = "   ";
         static int sor = 1;
-
+        static string uresHajo = " ° ";
+        static string raketa = "[-]";
+        static string[] rocket = new string[30];
+        static bool jatekVege = false;
+        static int pontszam = 0;
 
         static void Feltolt()
         {
@@ -56,11 +60,7 @@ namespace Rocket_game
 
         }
 
-        static string uresHajo = " ° ";
-        static string raketa = "[-]";
-        static string[] rocket = new string[30];
-        static bool jatekVege = false;
-        static int pontszam = 0;
+
         static void mozgas()
         {
             for (int i = 0; i < rocket.Length; i++)
