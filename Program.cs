@@ -215,6 +215,7 @@ namespace Rocket_game
         }
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
 
@@ -250,6 +251,7 @@ namespace Rocket_game
                 {
                     jatekVege = true;
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Game Over!");
                     Console.WriteLine($"Pontszám: {pontszam}");
                 }
@@ -257,6 +259,7 @@ namespace Rocket_game
                 {
                     jatekVege = true;
                     Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Gratulálok! Nyertél!");
                     Console.WriteLine($"Pontszám: {pontszam}");
                 }
