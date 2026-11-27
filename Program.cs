@@ -11,9 +11,8 @@ namespace Rocket_game
         static string[] rocket = new string[30];
         static bool jatekVege = false;
         static int pontszam = 0;
-        static void Feltoltes()
+        static void mozgas()
         {
-
             for (int i = 0; i < rocket.Length; i++)
             {
                 rocket[i] = ures;
@@ -23,10 +22,6 @@ namespace Rocket_game
             {
                 Console.Write(item, 5);
             }
-        }
-        static void mozgas()
-        {
-
             do
             {
                 Console.CursorVisible = false;
@@ -131,7 +126,6 @@ namespace Rocket_game
         }
         static void Main(string[] args)
         {
-            Feltoltes();
             mozgas();
             Jatek();
 
