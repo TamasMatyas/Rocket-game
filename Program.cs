@@ -253,6 +253,13 @@ namespace Rocket_game
                     Console.WriteLine("Game Over!");
                     Console.WriteLine($"Pontszám: {pontszam}");
                 }
+                if (pontszam >= 10000)
+                {
+                    jatekVege = true;
+                    Console.Clear();
+                    Console.WriteLine("Gratulálok! Nyertél!");
+                    Console.WriteLine($"Pontszám: {pontszam}");
+                }
             }
         }
 
