@@ -33,8 +33,8 @@ namespace Rocket_game
         {
             for (int i = 0; i < matrix.GetLength(1); i++)
             {
-                int szamaufo = r.Next(0, 2);
-                if (szamaufo == 1)
+                int leszer = r.Next(0, 2);
+                if (leszer == 0)
                 {
                     matrix[0, i] = ufo;
                 }
@@ -42,12 +42,7 @@ namespace Rocket_game
                 {
                     matrix[0, i] = ures;
                 }
-
-
-
-                    //int index = r.Next(1, matrix.GetLength(1) - 1);
-                    //matrix[0, index] = ufo;
-                }
+            }
         }
         static void FeltoltHajo()
         {
@@ -218,15 +213,20 @@ namespace Rocket_game
                     vege = true;
                 }
             }
+            
             return vege;
         }
         static void Main(string[] args)
         {
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
+            long vegejatekvaras = 0;
+            long vegeido = 0;
+            
 
-            const int gyorsKozMs = 200;
+            const int gyorsKozMs = 100;
             const int lassuKozMs = 1800;
+            const int varas = 3000;
             Feltolt();
             FeltoltHajo();
             Console.CursorVisible = false;
@@ -253,16 +253,32 @@ namespace Rocket_game
                     UFoSorPlus();
                     utolsoLassuEsemeny = most;
                 }
-                if (Lent() || most - utolsoLassuEsemeny >= lassuKozMs)
+                if (Lent() || most - utolsoLassuEsemeny >= lassuKozMs )
                 {
                     jatekVege = true;
                     Console.Clear();
                     Console.WriteLine("Game Over!");
                     Console.WriteLine($"Pontszám: {pontszam}");
+                    
                 }
+                if (pontszam >= 1000)
+                {
+                    jatekVege = true;
+                    Console.Clear();
+                    Console.WriteLine("Gratulálunk nyerték");
+                    Console.WriteLine($"Pontszám: {pontszam}");
+                    int vegeszo;
+                    do
+                    {
+                        vegeszo = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("A játék véget ért, nyomj 0-t a kilépéshez.");
+                    } while (vegeszo != 0);
+                        
+                
             }
         }
 
 
     }
 }
+ 
