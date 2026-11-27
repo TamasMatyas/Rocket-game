@@ -254,6 +254,8 @@ namespace Rocket_game
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Game Over!");
                     Console.WriteLine($"Pontszám: {pontszam}");
+                    Console.CursorVisible = false;
+                    Console.ReadKey();
                 }
                 if (pontszam >= 10000)
                 {
@@ -262,6 +264,9 @@ namespace Rocket_game
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("Gratulálok! Nyertél!");
                     Console.WriteLine($"Pontszám: {pontszam}");
+                    Console.CursorVisible = false;
+                    Console.SetCursorPosition(0, 0);
+                    Console.ReadKey();
                 }
             }
         }
