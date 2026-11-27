@@ -259,7 +259,13 @@ namespace Rocket_game
                     Console.Clear();
                     Console.WriteLine("Game Over!");
                     Console.WriteLine($"Pontszám: {pontszam}");
-                    
+                    int vegeszo;
+                    do
+                    {
+                        vegeszo = Convert.ToInt32(Console.ReadLine());
+
+                    } while (vegeszo != 0);
+
                 }
                 if (pontszam >= 1000)
                 {
@@ -271,7 +277,7 @@ namespace Rocket_game
                     do
                     {
                         vegeszo = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("A játék véget ért, nyomj 0-t a kilépéshez.");
+                        
                     } while (vegeszo != 0);
                         
                 
