@@ -12,6 +12,7 @@ namespace Rocket_game
         static string ures = "   ";
         static string uresHajo = " ° ";
         static string raketa = "[-]";
+        static string lovedek = " ^ ";
         static string[] rocket = new string[30];
         static bool jatekVege = false;
         static int pontszam = 0;
@@ -30,11 +31,23 @@ namespace Rocket_game
         }
         static void UFoSorPlus()
         {
-            for (int i = 0; i < matrix.GetLength(1) / 2; i++)
+            for (int i = 0; i < matrix.GetLength(1); i++)
             {
-                int index = r.Next(1, matrix.GetLength(1) - 1);
-                matrix[0, index] = ufo;
-            }
+                int szamaufo = r.Next(0, 2);
+                if (szamaufo == 1)
+                {
+                    matrix[0, i] = ufo;
+                }
+                else
+                {
+                    matrix[0, i] = ures;
+                }
+
+
+
+                    //int index = r.Next(1, matrix.GetLength(1) - 1);
+                    //matrix[0, index] = ufo;
+                }
         }
         static void FeltoltHajo()
         {
@@ -146,9 +159,55 @@ namespace Rocket_game
                         }
                         break;
                     }
+                case ' ':
+                    {
+                        Loves();
+                        break;
+                    }
 
             }
         }
+        static void Loves()
+        {
+            for (int i = 0; i < rocket.Length; i++)
+            {
+                if (rocket[i] == raketa)
+                {
+                    matrix[matrix.GetLength(0) - 2, i] = lovedek;
+                }
+            }
+        }
+        static void LovedekMozgat()
+        {
+            for (int i = 1; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (matrix[i, j] == lovedek)
+                    {
+                        if (matrix[i - 1, j] == ufo)
+                        {
+                            matrix[i - 1, j] = ures;
+                            matrix[i, j] = ures;
+                            pontszam += 100;
+                        }
+                        else if (i == 1)
+                        {
+                            matrix[i, j] = ures;
+                        }
+                        else
+                        {
+                            matrix[i - 1, j] = lovedek;
+                            matrix[i, j] = ures;
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+
         static bool Lent()
         {
             bool vege = false;
@@ -167,7 +226,7 @@ namespace Rocket_game
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 10000;
+            const int lassuKozMs = 1800;
             Feltolt();
             FeltoltHajo();
             Console.CursorVisible = false;
@@ -176,13 +235,16 @@ namespace Rocket_game
                 if (Console.KeyAvailable)
                 {
                     Hajo();
+
                 }
+                
                 Kiir();
                 HajoKiir();
                 Console.SetCursorPosition(0, 0);
                 long most = ora.ElapsedMilliseconds;
                 if (most - utolsoGyorsEsemeny >= gyorsKozMs)
                 {
+                    LovedekMozgat();
                     utolsoGyorsEsemeny = most;
                 }
                 if (most - utolsoLassuEsemeny >= lassuKozMs)
