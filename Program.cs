@@ -59,8 +59,6 @@ namespace Rocket_game
             }
 
         }
-
-
         static void mozgas()
         {
             for (int i = 0; i < rocket.Length; i++)
