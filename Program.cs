@@ -28,10 +28,11 @@ namespace Rocket_game
             }
             UFoSorPlus();
         }
-        static void UFoSorPlus(){
+        static void UFoSorPlus()
+        {
             for (int i = 0; i < matrix.GetLength(1) / 2; i++)
             {
-                int index = r.Next(1, matrix.GetLength(0) - 1);
+                int index = r.Next(1, matrix.GetLength(1) - 1);
                 matrix[0, index] = ufo;
             }
         }
@@ -49,7 +50,7 @@ namespace Rocket_game
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
                 {
-                    Console.Write($"{matrix[i, j],3}");
+                    Console.Write($"{matrix[i, j]}");
                 }
                 Console.WriteLine();
             }
@@ -74,7 +75,7 @@ namespace Rocket_game
         {
             foreach (var item in rocket)
             {
-                Console.Write(item, 5);
+                Console.Write(item, 3);
             }
             Console.WriteLine();
         }
@@ -148,19 +149,29 @@ namespace Rocket_game
 
             }
         }
-
-
+        static bool Lent()
+        {
+            bool vege = false;
+            for (int i = 0; i < matrix.GetLength(1); i++)
+            {
+                if (matrix[matrix.GetLength(0) - 1, i] == ufo)
+                {
+                    vege = true;
+                }
+            }
+            return vege;
+        }
         static void Main(string[] args)
         {
             long utolsoGyorsEsemeny = 0;
             long utolsoLassuEsemeny = 0;
 
             const int gyorsKozMs = 200;
-            const int lassuKozMs = 6000;
+            const int lassuKozMs = 1000;
             Feltolt();
             FeltoltHajo();
             Console.CursorVisible = false;
-            while (pontszam < 10000 || jatekVege == true)
+            while (pontszam < 10000 && jatekVege != true)
             {
                 if (Console.KeyAvailable)
                 {
@@ -180,10 +191,16 @@ namespace Rocket_game
                     UFoSorPlus();
                     utolsoLassuEsemeny = most;
                 }
-
-
-
+                if (Lent() || most - utolsoLassuEsemeny >= lassuKozMs)
+                {
+                    jatekVege = true;
+                    Console.Clear();
+                    Console.WriteLine("Game Over!");
+                    Console.WriteLine($"Pontszám: {pontszam}");
+                }
             }
         }
+
+
     }
 }
